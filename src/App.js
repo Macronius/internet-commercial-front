@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+// ROUTES
+import Authentication from './routes/authentication/authentication.component';
+import Home from './routes/home/home.component';
+import Navigation from './routes/navigation/navigation.component';
+import Shop from './routes/shop/shop.component';
+
+
+
+
+// Components
+
+const Contact = () => (
+  <h1>3 - 2 - 1 - CONTACT</h1>
+)
+
+const Projects = () => {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Projects</h1>
+      <div>
+        <h3>Choice Projects</h3>
+        <h3>Journey of Projects</h3>
+      </div>
     </div>
+  )
+}
+
+const App = () => {
+
+  return (
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index={true} element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="auth" element={<Authentication />} />
+        <Route path="projects" element={<Projects />} />
+      </Route>
+    </Routes>
   );
 }
 
