@@ -41,7 +41,7 @@ export const CartProvider = ( {children} ) => {
         const newCartCount = cartItems.reduce( (total, cartItem) => total + cartItem.quantity, 0);
 
         setCartCount(newCartCount);
-    });
+    }, [cartItems]);
 
     const addItemToCart = (product) => {
         setCartItems(addCartItem(cartItems, product));
