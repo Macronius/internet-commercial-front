@@ -48,3 +48,11 @@ should probably be kept in the same place where we are also storing it.
 1. mount it on componentMount by using useEffect with empty dependency array
 
 */
+
+
+
+DESIGN NOTES:
+
+- ALWAYS RETURN A NEW OBJECT OR ARRAY
+    - 1. it is best to never change the original data
+    - 2. react will not register change in an object if only a value mutates, but it an entirely new object returns... all due to how React renders
