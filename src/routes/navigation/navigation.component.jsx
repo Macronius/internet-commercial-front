@@ -18,7 +18,7 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 // STYLES
-import "./navigation.styles.scss";
+import "./navigation.styles.scss"
 
 
 

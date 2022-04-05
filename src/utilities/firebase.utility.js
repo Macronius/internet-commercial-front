@@ -21,6 +21,10 @@ import {
     doc,        // get a document instance
     getDoc,     // access document's data
     setDoc,     // set document's data
+    collection, // similar to getting a userDocRef, 
+    writeBatch, // use this to run multiple calls for a single process
+    query,
+    getDocs,
 } from 'firebase/firestore';
 
 
@@ -69,6 +73,45 @@ export const signInWithGoogleEmailPassword = () => signInWithEmailAndPassword(au
 
 // create the db (instantiate the firestore) in order to use to access the database
 export const db = getFirestore();
+
+
+// new function to handle putting data from local up to firestore (probably a temporary function), 
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+
+    const collectionRef = collection(db, collectionKey);
+
+    //store each of these objects inside of this new collectionRef as a new document (since we are writing multiple different documents into a collection, therefore, we need to think about the concept of transactions)
+    //create a batch to add all objects to the collection in one successfull transaction
+    const batch = writeBatch(db);
+
+    // create a bunch of set-events
+    objectsToAdd.forEach( object => {
+        const docRef = doc(collectionRef, object.title.toLowerCase());
+        batch.set(docRef, object);
+    });
+
+    await batch.commit();
+    console.log("done")
+}
+
+/*PATTERN used to ensure code behaves when Firebase updates*/
+// helper function to isolate areas that might change from other areas (in this particular case, from third party libraries)
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+
+    const querySnapshot = await getDocs(q);
+    
+    //reduce over this to create the data structure
+    const categoryMap = querySnapshot.docs.reduce( (accumulator, docSnapshot) => {
+        const { title, items } = docSnapshot.data();
+        accumulator[title.toLowerCase()] = items;
+        return accumulator;
+    }, {});
+
+    return categoryMap;
+};
+
 
 
 
