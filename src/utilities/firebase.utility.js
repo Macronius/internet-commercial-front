@@ -72,7 +72,8 @@ export const signInWithGoogleEmailPassword = () => signInWithEmailAndPassword(au
 
 
 // create the db (instantiate the firestore) in order to use to access the database
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
+// export const db = getFirestore();
 
 
 // new function to handle putting data from local up to firestore (probably a temporary function), 
