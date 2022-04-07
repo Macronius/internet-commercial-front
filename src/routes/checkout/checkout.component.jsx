@@ -4,7 +4,7 @@ import { CartContext } from '../../contexts/cart.context';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
-import './checkout.styles.scss';
+import { CheckoutContainer, TotalContainer } from './checkout.styles.jsx';
 
 
 const Checkout = () => {
@@ -14,7 +14,7 @@ const Checkout = () => {
 
 
     return (
-        <div className="checkout-container">
+        <CheckoutContainer>
             <div className="header-container">
                 <h1>Checkout</h1>
             </div>
@@ -45,8 +45,8 @@ const Checkout = () => {
                     ))
                 }
             </div>
-            <span className="total">Total: ${cartTotal}</span>
-        </div>
+            <TotalContainer>Total: ${cartTotal}</TotalContainer>
+        </CheckoutContainer>
     )
 }
 

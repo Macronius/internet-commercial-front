@@ -1,5 +1,7 @@
+import styled from 'styled-components';
 
-.checkout-container {
+
+export const CheckoutContainer = styled.div`
     width: 64%;
     min-height: 90vh;
     // background-color: lightskyblue;
@@ -44,10 +46,10 @@
             width: 8%;
         }
     }
-}
+`
 
-.total {
+export const TotalContainer = styled.span`
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
-}
+`

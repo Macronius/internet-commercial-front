@@ -109,6 +109,27 @@ PATTERN:
 
 
 
+__
+title: Project Notes
+__
+# Notes By Section / Project-phase
+
+
+## GOALS
+- [ ] complete phase one of this project by end of day today
+- [ ] publish to netlify
+- [ ] move on
+
+## TODOs
+- [ ] complete styled-components 
+- [ ] next phase is 
+
+## COMPONENTS
+- [[button.component.jsx]]
+- [[button.styles.scss]]
+- [[button.styles.jsx]]
+
+
 
 
 
@@ -118,3 +139,14 @@ PATTERN:
 
 **STYLED COMPONENTS**
 generates unique class names
+
+nesting ability / targeting-selector ability inside of style components
+    - each component gets a custom class-name when 
+
+**with reference to form-input.styles.jsx**
+  - [ ] __CSS block__:
+  - import { css } from 'styled-components';
+  - encapsulate some css inside of a block that we can use as a variable and inject into our different components
+  - [ ] __convert the css variables to javascript variables
+
+Follow up with more on the javascript logic that goes inside the string-literal synt

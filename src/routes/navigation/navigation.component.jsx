@@ -18,7 +18,12 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 // STYLES
-import "./navigation.styles.scss"
+import { 
+  NavigationContainer,
+  LogoLinkContainer,
+  NavLinks,
+  NavLink
+} from "./navigation.styles";
 
 
 
@@ -32,42 +37,42 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to='/'>
+      <NavigationContainer>
+        <LogoLinkContainer to='/'>
             <CrwnLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
+        </LogoLinkContainer>
+        <NavLinks>
 
-            <Link className="nav-link" to="/shop">
+            <NavLink to="/shop">
                 SHOP
-            </Link>
+            </NavLink>
 
             <CartIcon />
 
-            <Link className="nav-link" to="/contact">
+            <NavLink to="/contact">
                 CONTACT
-            </Link>
+            </NavLink>
             
-            <Link className="nav-link" to="/projects">
+            <NavLink to="/projects">
                 Projects
-            </Link>
+            </NavLink>
             
             {/*sign-in or sign-out link*/}
             {
               currentUser ? (
-                <span className="nav-link" onClick={signOutUser}>Sign Out</span>
+                <NavLink as="span" onClick={signOutUser}>Sign Out</NavLink>
               ) :(
-                <Link className="nav-link" to="/auth">Sign In</Link>
+                <NavLink to="/auth">Sign In</NavLink>
               )
             }
             
-        </div>
+        </NavLinks>
 
         {
           isCartOpen && <CartDropdown />
         }
 
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   )
