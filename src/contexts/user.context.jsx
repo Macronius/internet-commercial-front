@@ -3,6 +3,8 @@ import { createContext, useEffect, useReducer } from 'react';
 
 import { createUserDocumentFromAuth, onAuthStateChangedListener } from '../utilities/firebase.utility';
 
+import {createAction} from '../utilities/reducer/reducer.utilities';
+
 
 // CONTEXT
 export const UserContext = createContext({
@@ -52,7 +54,9 @@ export const UserProvider = ( {children} ) => {
     const {currentUser} = state; console.log("currentUser: ", currentUser);
     // define setCurrentUser
     const setCurrentUser = user => {
-        dispatch( {type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user});
+        dispatch(
+            createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user)
+        );
     }
     // store both in an object called 'userValue,' which will be set as a value prop for the <UserContext.Provider value={} later
     const userValue = {currentUser, setCurrentUser};
